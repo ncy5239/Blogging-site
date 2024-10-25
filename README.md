@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-
-
 # Project Name: post your blog 
 
 A web-based platform for managing articles with user authentication. Users can register, log in, create, update, delete, and view articles. The project is built with React and Ant Design Pro components and communicates with a backend API for data management.
