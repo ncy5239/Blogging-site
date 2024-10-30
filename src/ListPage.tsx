@@ -1,7 +1,8 @@
 import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { ProList, ModalForm, ProFormText, ProFormTextArea } from '@ant-design/pro-components';
 import { Button, Tag, message, Popconfirm, Card } from 'antd';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 export default () => {
   const [modalVisit, setModalVisit] = useState(false);
@@ -137,8 +138,12 @@ export default () => {
           ];
         }}
         itemLayout="vertical"
+        style={{
+          width: '70vw',
+          margin: "0 auto"
+        }}
         rowKey="_id"
-        headerTitle="Article List"
+        headerTitle="Blog List"
         dataSource={dataSource}  // 绑定从后端获取的数据
         metas={{
           title: {
@@ -147,7 +152,7 @@ export default () => {
           description: {
             render: (_, row) => (
               <>
-                <Tag>{row.author}</Tag>
+                Author: {row.author}
               </>
             ),
           },
@@ -182,13 +187,12 @@ export default () => {
           content: {
             render: (_, row) => {
               return (
-                <Card style={{ marginBottom: 16 }}>
-                  <div>{row.content}</div>
-                </Card>
+                <ReactMarkdown>{row.content}</ReactMarkdown>
               );
             },
           },
         }}
+        rowClassName="listItem"
       />
 
       {/* ModalForm - 新建文章 */}
